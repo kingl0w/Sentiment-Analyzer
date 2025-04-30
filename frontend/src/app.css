@@ -1,13 +1,13 @@
 :root {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
   font-weight: 400;
-  color: #333;
-  background-color: #f5f7fa;
-  --primary-color: #5680e9;
-  --positive-color: #5cdb95;
-  --neutral-color: #8395a7;
-  --negative-color: #ff6b6b;
+  color: #2d3748;
+  background-color: #f7fafc;
+  --primary-color: #4a5568;
+  --positive-color: #48bb78;
+  --neutral-color: #718096;
+  --negative-color: #f56565;
 }
 
 body {
@@ -16,25 +16,25 @@ body {
   display: flex;
   justify-content: center;
   padding: 0;
-  background-color: #f9fafc;
+  background-color: #f7fafc;
 }
 
 #app {
   width: 100%;
   max-width: 800px;
   margin: 2rem auto;
-  padding: 2rem;
+  padding: 3rem;
   background-color: white;
-  border-radius: 0;
-  box-shadow: none;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
 }
 
 textarea {
   width: 100%;
   min-height: 120px;
   padding: 1rem;
-  border: 1px solid #eaeaea;
-  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
   font-size: 1rem;
   font-family: inherit;
   resize: vertical;
@@ -46,41 +46,36 @@ textarea {
 textarea:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: none;
+  box-shadow: 0 0 0 2px rgba(74, 85, 104, 0.2);
 }
 
 button {
   background-color: var(--primary-color);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 0.8rem 1.5rem;
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: none;
 }
 
 button:hover {
-  background-color: #4070d8;
-  transform: none;
-  box-shadow: none;
+  filter: brightness(110%);
 }
 
 .example-btn {
-  background-color: #f5f7fa;
-  color: #555;
-  border: none;
+  background-color: #edf2f7;
+  color: #4a5568;
+  border: 1px solid #e2e8f0;
   margin-right: 8px;
   margin-bottom: 8px;
   font-size: 0.9rem;
-  box-shadow: none;
 }
 
 .example-btn:hover {
-  background-color: #e9ecef;
-  box-shadow: none;
+  background-color: #e2e8f0;
 }
 
 .examples {
@@ -91,38 +86,54 @@ button:hover {
 }
 
 .result-container {
-  margin: 2rem 0;
+  margin: 2.5rem 0;
   padding: 2rem;
-  border-radius: 0;
+  border-radius: 8px;
   background-color: #ffffff;
-  box-shadow: none;
-  animation: fadeIn 0.5s ease;
   position: relative;
   overflow: hidden;
-  border-left: 3px solid #ddd;
+  border: 1px solid #e2e8f0;
+}
+
+.result-container::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
 }
 
 .result-container.positive {
-  border-left: 3px solid var(--positive-color);
-  background-color: rgba(92, 219, 149, 0.05);
+  border-color: var(--positive-color);
+}
+
+.result-container.positive::before {
+  background-color: var(--positive-color);
 }
 
 .result-container.neutral {
-  border-left: 3px solid var(--neutral-color);
-  background-color: rgba(131, 149, 167, 0.05);
+  border-color: var(--neutral-color);
+}
+
+.result-container.neutral::before {
+  background-color: var(--neutral-color);
 }
 
 .result-container.negative {
-  border-left: 3px solid var(--negative-color);
-  background-color: rgba(255, 107, 107, 0.05);
+  border-color: var(--negative-color);
+}
+
+.result-container.negative::before {
+  background-color: var(--negative-color);
 }
 
 .result-container h2 {
   font-size: 1.25rem;
   margin-top: 0;
   margin-bottom: 1.5rem;
-  color: #444;
-  font-weight: 500;
+  color: #2d3748;
+  font-weight: 600;
 }
 
 .sentiment-result {
@@ -131,16 +142,15 @@ button:hover {
 }
 
 .sentiment-result h3 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   margin-bottom: 0.5rem;
-  color: #2c3e50;
-  font-weight: 500;
+  color: #2d3748;
+  font-weight: 600;
 }
 
 .confidence {
   font-size: 0.95rem;
-  font-weight: 400;
-  color: #666;
+  color: #718096;
   margin-bottom: 2rem;
 }
 
@@ -150,58 +160,26 @@ button:hover {
 }
 
 .explanation {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   padding: 1.5rem;
-  border-radius: 0;
-  background-color: #f9fafc;
+  border-radius: 6px;
+  background-color: #f7fafc;
   font-size: 0.95rem;
-  color: #555;
+  color: #4a5568;
   line-height: 1.6;
-  border-left: 3px solid #eaeaea;
+  border: 1px solid #e2e8f0;
 }
 
 .explanation h3 {
   margin-top: 0;
-  color: #333;
+  color: #2d3748;
   font-size: 1.1rem;
-  font-weight: 500;
-}
-
-.spinner {
-  border: 3px solid rgba(0, 0, 0, 0.05);
-  border-left-color: var(--primary-color);
-  border-radius: 50%;
-  width: 25px;
-  height: 25px;
-  animation: spin 1s linear infinite;
-  margin: 0 auto 1rem;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  font-weight: 600;
 }
 
 /* Typography */
 h3 {
   letter-spacing: -0.01em;
-}
-
-/* Remove all box shadows */
-* {
-  box-shadow: none !important;
 }
 
 /* Responsive adjustments */
