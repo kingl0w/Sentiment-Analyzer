@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-// Define types for our API responses
 interface SentimentResult {
   sentiment: string;
   probabilities: Record<string, number>;
@@ -11,14 +10,11 @@ interface HealthCheckResponse {
   status: string;
 }
 
-// Create axios instance with base URL
 const api = axios.create({
-  baseURL: 'http://backend:8000'
+  baseURL: '/api'
 });
 
-// Sentiment analysis service
 export const sentimentService = {
-  // Analyze sentiment of text
   analyze: async (text: string): Promise<SentimentResult> => {
     try {
       const response = await api.post<SentimentResult>('/analyze', { text });
@@ -29,7 +25,6 @@ export const sentimentService = {
     }
   },
   
-  // Check if API is available
   checkHealth: async (): Promise<boolean> => {
     try {
       const response = await api.get<HealthCheckResponse>('/health');
