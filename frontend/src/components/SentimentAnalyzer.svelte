@@ -43,13 +43,20 @@
 
   $: if (result && chartEl) {
     const labels = Object.keys(result.probabilities);
-    const values = Object.values(result.probabilities).map(p => p * 100);
-
+    
+    // Match colors to sentiment labels
+    const backgroundColors: Record<string, string> = {
+      'Positive': '#48bb78', // Green for positive
+      'Neutral': '#718096',  // Gray for neutral
+      'Negative': '#f56565'  // Red for negative
+    };
+    
+    // Create chart data with matched colors
     const chartData: ChartData<'doughnut', number[], unknown> = {
       labels,
       datasets: [{
-        data: values,
-        backgroundColor: ['#dc3545', '#6c757d', '#28a745']
+        data: Object.values(result.probabilities).map(p => p * 100),
+        backgroundColor: labels.map(label => backgroundColors[label])
       }]
     };
 
@@ -175,4 +182,3 @@
     </p>
   </div>
 </div>
-
