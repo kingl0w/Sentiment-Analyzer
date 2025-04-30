@@ -4,10 +4,10 @@
   font-weight: 400;
   color: #2d3748;
   background-color: #f7fafc;
-  --primary-color: #4a5568;
-  --positive-color: #48bb78;
-  --neutral-color: #718096;
-  --negative-color: #f56565;
+  --positive-color: #48bb78; 
+  --neutral-color: #718096; 
+  --negative-color: #f56565; 
+  --primary-color: #4299e1; 
 }
 
 body {
@@ -27,6 +27,7 @@ body {
   background-color: white;
   border-radius: 8px;
   border: 1px solid #e2e8f0;
+  box-shadow: none !important;
 }
 
 textarea {
@@ -41,12 +42,13 @@ textarea {
   margin-bottom: 1.5rem;
   box-sizing: border-box;
   transition: border-color 0.3s;
+  box-shadow: none !important;
 }
 
 textarea:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 2px rgba(74, 85, 104, 0.2);
+  box-shadow: none !important;
 }
 
 button {
@@ -59,10 +61,12 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
+  box-shadow: none !important;
 }
 
 button:hover {
   filter: brightness(110%);
+  box-shadow: none !important;
 }
 
 .example-btn {
@@ -72,10 +76,12 @@ button:hover {
   margin-right: 8px;
   margin-bottom: 8px;
   font-size: 0.9rem;
+  box-shadow: none !important;
 }
 
 .example-btn:hover {
   background-color: #e2e8f0;
+  box-shadow: none !important;
 }
 
 .examples {
@@ -93,38 +99,51 @@ button:hover {
   position: relative;
   overflow: hidden;
   border: 1px solid #e2e8f0;
+  box-shadow: none !important;
 }
 
-.result-container::before {
+.result-container.positive {
+  border-color: var(--positive-color);
+  background-color: rgba(72, 187, 120, 0.05);
+}
+
+.result-container.positive::before {
   content: '';
   position: absolute;
   left: 0;
   top: 0;
   height: 100%;
   width: 4px;
-}
-
-.result-container.positive {
-  border-color: var(--positive-color);
-}
-
-.result-container.positive::before {
   background-color: var(--positive-color);
 }
 
 .result-container.neutral {
   border-color: var(--neutral-color);
+  background-color: rgba(113, 128, 150, 0.05);
 }
 
 .result-container.neutral::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
   background-color: var(--neutral-color);
 }
 
 .result-container.negative {
   border-color: var(--negative-color);
+  background-color: rgba(245, 101, 101, 0.05);
 }
 
 .result-container.negative::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
   background-color: var(--negative-color);
 }
 
@@ -159,6 +178,16 @@ button:hover {
   margin: 0 auto;
 }
 
+/* Fix chart segment colors */
+canvas {
+  max-width: 100%;
+}
+
+/* Remove all box shadows globally */
+* {
+  box-shadow: none !important;
+}
+
 .explanation {
   margin-top: 2.5rem;
   padding: 1.5rem;
@@ -168,6 +197,7 @@ button:hover {
   color: #4a5568;
   line-height: 1.6;
   border: 1px solid #e2e8f0;
+  box-shadow: none !important;
 }
 
 .explanation h3 {
@@ -175,11 +205,6 @@ button:hover {
   color: #2d3748;
   font-size: 1.1rem;
   font-weight: 600;
-}
-
-/* Typography */
-h3 {
-  letter-spacing: -0.01em;
 }
 
 /* Responsive adjustments */
