@@ -65,6 +65,76 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.result-container {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  animation: fadeIn 0.4s ease;
+}
+
+.result-container.positive {
+  border-left: 6px solid #28a745;
+}
+
+.result-container.neutral {
+  border-left: 6px solid #6c757d;
+}
+
+.result-container.negative {
+  border-left: 6px solid #dc3545;
+}
+
+.result-container h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.sentiment-result h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.sentiment-result .confidence {
+  font-weight: bold;
+  color: #333;
+}
+
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #4caf50;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 0.5rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
